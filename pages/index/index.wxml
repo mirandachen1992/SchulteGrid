@@ -1,0 +1,24 @@
+<view class="app">
+	<view class="card"><view>计时</view>{{time}}</view>
+	<view class="container">
+		<view class="grid-container" wx:for="{{numbers}}" wx:key="*this">
+			<view class="{{num < item ? 'grid':'grid grid-disable' }}" style="width:{{width}}; height:{{width}}; font-size: {{fontSize}}" bindtap="clickMe" id="{{item}}">
+				{{showNum ? item : ''}}
+			</view>
+		</view>
+		<view class="modal" wx:if="{{!showNum}}">
+		</view>
+		<view class="buttons-group" wx:if="{{!showNum}}">
+			<view class="text">{{statusText[status]}}</view>
+			<view class="buttons">
+				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" wx:key="*this" bindtap="choose" id="{{item}}">{{item}}X{{item}}</button>
+			</view>
+			<view class="buttons">
+				<button class="button">榜单</button>
+				<button class="button" bindtap="start">挑战</button>
+			</view>
+		</view>
+	</view>
+	<view>
+</view>
+</view>
