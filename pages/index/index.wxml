@@ -3,7 +3,7 @@
 	<view class="container">
 		<view class="grid-container" wx:for="{{numbers}}" wx:key="*this">
 			<view class="{{num < item ? 'grid':'grid grid-disable' }}" style="width:{{width}}; height:{{width}}; font-size: {{fontSize}}" bindtap="clickMe" id="{{item}}">
-				{{showNum ? item : ''}}
+				<text>{{showNum ? item : ''}}</text>
 			</view>
 		</view>
 		<view class="modal" wx:if="{{!showNum}}">

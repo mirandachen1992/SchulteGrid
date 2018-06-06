@@ -19,7 +19,7 @@ Page({
   // Event handler.
   clickMe: function(event) {
     let { num, currentSize } = this.data;
-    let item = event.target.id;
+    let item = event.currentTarget.id;
     if (item == num + 1) {
       this.setData({
         num: Number(item)
