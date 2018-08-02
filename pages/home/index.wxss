@@ -1,0 +1,42 @@
+.authorize-button {
+    color: #fff;
+    box-shadow: 0 6px #226fbe;
+	width: 50%;
+    margin-bottom: 20px;
+    background: #5cbcf6;
+    transform: translate(500px);
+}
+
+.authorize-button:active {
+    box-shadow: 0 0 #226fbe;
+    top: 6px;
+}
+
+.avatar {
+	border-radius: 50%;
+	overflow: hidden;
+	display: block;
+    margin: auto;
+}
+
+.avatar-container {
+	text-align: center;
+    margin: 50rpx;
+    height: 100px;
+}
+
+.avatar-container .avatar {
+	width: 150rpx;
+	height: 150rpx;
+}
+
+.avatar-container .avatar-name {
+	font-size: 30rpx;
+	color: #ffffff;
+}
+
+image {
+    width: 50%;
+    margin: 100rpx auto;
+    display: block;
+}

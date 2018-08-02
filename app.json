@@ -1,19 +1,14 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/index/index",
-    "pages/logs/index"
+    "pages/list/index"
   ],
   "window": {
-    "navigationBarTitleText": "Demo"
-  },
-  "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/logs/index",
-      "text": "日志"
-    }]
+    "navigationBarTitleText": "Demo",
+    "backgroundColorTop":"#6B2C86",
+    "backgroundColorBottom":"#0E033F",
+    "navigationBarTitleText": "舒尔特注意训练"
   },
   "networkTimeout": {
     "request": 10000,

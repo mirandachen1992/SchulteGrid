@@ -1,0 +1,50 @@
+.radio-group {
+	margin: 40rpx;
+	text-align: center;
+}
+
+.list {
+	width: 80%;
+	min-height: 700rpx;
+	margin: 40rpx auto;
+	
+	background: #ededed;
+	border-radius: 20rpx;
+}
+
+.list-title {
+	height: 100rpx;
+	background: #f6b433;
+	border-radius: 20rpx 20rpx 0 0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+
+}
+
+.list-container {
+	height: 360px;
+	overflow: auto;
+}
+.list-content {
+	display: flex;
+	justify-content: space-between;
+	padding: 40rpx;
+	font-size: 30rpx;
+}
+.list image {
+	width: 80rpx;
+	height: 80rpx;
+	float: left;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.list text {
+	line-height: 80rpx;
+	margin-left: 10rpx;
+}
+.list .record {
+	/*align-self: flex-end;*/
+}
+

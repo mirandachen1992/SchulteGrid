@@ -1,21 +1,35 @@
+<!-- <view class="{{authorize ? 'avatar-container-small' : 'avatar-container'}}"> -->
+<view class="avatar-container-small">
+	<open-data class="avatar" type="userAvatarUrl"></open-data>
+	<open-data class="avatar-name" type="userNickName"></open-data>
+</view>
 <view class="app">
+	<view class="card"><view>最好</view>{{topRecord}}</view>
 	<view class="card"><view>计时</view>{{time}}</view>
-	<view class="container">
-		<view class="grid-container" wx:for="{{numbers}}" wx:key="*this">
-			<view class="{{num < item ? 'grid':'grid grid-disable' }}" style="width:{{width}}; height:{{width}}; font-size: {{fontSize}}" bindtap="clickMe" id="{{item}}">
+	<view class="area">
+		<view class="container"  wx:if="{{showNum}}">
+		<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
+			<view 
+				class="{{num < item ? 'grid':'grid grid-disable' }}" 
+				animation="{{clickId == item ? animation : ''}}" 
+				style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
+				bind:touchstart="clickMe" 
+				id="{{item}}"
+			>
 				<text>{{showNum ? item : ''}}</text>
 			</view>
+		</view>
 		</view>
 		<view class="modal" wx:if="{{!showNum}}">
 		</view>
 		<view class="buttons-group" wx:if="{{!showNum}}">
 			<view class="text">{{statusText[status]}}</view>
 			<view class="buttons">
-				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" wx:key="*this" bindtap="choose" id="{{item}}">{{item}}X{{item}}</button>
+				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</button>
 			</view>
-			<view class="buttons">
-				<button class="button">榜单</button>
-				<button class="button" bindtap="start">挑战</button>
+			<view class="buttons-bottom">
+				<button class="button" bindtap="start">开始挑战</button>
+				<button class="button" bindtap="toList">榜单</button>
 			</view>
 		</view>
 	</view>
