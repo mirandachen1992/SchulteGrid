@@ -14,7 +14,7 @@
 
 .list-title {
 	height: 100rpx;
-	background: #f6b433;
+	background: #fcad26;
 	border-radius: 20rpx 20rpx 0 0;
 	display:flex;
 	justify-content:center;
@@ -31,6 +31,8 @@
 	justify-content: space-between;
 	padding: 40rpx;
 	font-size: 30rpx;
+	font-size: 12px;
+
 }
 .list image {
 	width: 80rpx;
@@ -45,6 +47,27 @@
 	margin-left: 10rpx;
 }
 .list .record {
+	width: 20%;
 	/*align-self: flex-end;*/
+}
+.content-left {
+	width: 75%;
+	margin-right: 5%;
+	overflow: hidden;
+ 	text-overflow: ellipsis;
+ 	white-space: nowrap;
+}
+.nickName {
+}
+
+.list .number {
+	float: left;
+	margin-right: 10px;
+}
+
+.list .number::before {
+	content: 'No.';
+	color: #fcad26;
+	font-size: 14px;
 }
 

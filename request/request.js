@@ -1,5 +1,6 @@
 const HOST = 'https://sg.eldesign.cn';
 // const HOST = 'http://localhost:8080';
+// const HOST =  'http://47.98.47.153:8080'
 
 function saveRecord(post) {
   return new Promise((resolve, reject) => {

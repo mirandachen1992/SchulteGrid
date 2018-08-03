@@ -1,0 +1,9 @@
+.info {
+    margin: 20px auto;
+    width: 80%;
+    padding: 10px;
+    position: absolute;
+    font-size: 12px;
+    top: 0;
+    color: #ffffff;
+}

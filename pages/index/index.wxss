@@ -39,11 +39,23 @@
 	/*font-size: 8vw;*/
 	color: #656464;
 	border: 2px solid #f7f5f5;
-	transition: all 0.3s;
+	transition: all 0.2s;
+
 }
 
 .grid-disable {
 	border: 2px dashed #a09b92;
+	background: #c5c5c5;
+	/* transform: rotateY(180deg); */
+}
+
+.test:active {
+	background: #f19b9b;
+	border-color: #f19b9b; 
+}
+
+.grid-disable text {
+	display: none;
 }
 
 .modal {

@@ -1,6 +1,6 @@
 <radio-group class="radio-group" bindchange="radioChange">
   <label class="radio" wx:key="{{this}}" wx:for="{{sizes}}">
-    <radio value="{{item}}" checked="{{item == chooseType}}"/>{{item}}✻{{item}}
+    <radio value="{{item}}" checked="{{item == chooseType}}" color="#226fbe"/>{{item}}✻{{item}}
   </label>
 </radio-group>
 
@@ -8,11 +8,12 @@
   <view class="list-title">排行榜</view>
   <scroll-view scroll-y scroll-with-animation class="list-container">
 		<view wx:for="{{list}}" wx:key="{{this}}" class="list-content">
-			<view>
+			<view class="content-left">
+				<text class="number">{{item.number}}</text>
 				<image src="{{item.avatarUrl}}"></image>
 				<text class="nickName">{{item.nickName}}</text>
 			</view>
-			<text class="record">{{item.record}}秒</text>
+			<text class="record">{{item.record}} 秒</text>
 		</view>
   </scroll-view>
 </view>
