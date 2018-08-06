@@ -59,7 +59,7 @@ Page({
     let _this = this;
     wx.showShareMenu({
         withShareTicket: true
-      })
+    })
 
     // if (app.globalData.authorize) {
     //   this.setData({ authorize: app.globalData.authorize })
@@ -82,15 +82,15 @@ Page({
 
   getUserInfo: function(info, err) {
     //   判断是否授权成功
-    // app.setAuthorize().then(data => {
-        // this.setData({ authorize: true });
+    app.setAuthorize().then(data => {
+        this.setData({ authorize: true });
         this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
         wx.navigateTo({
             url: '/pages/index/index'
         })
-    // }).catch(err => {
-    //     console.log(err);
-    // });
+    }).catch(err => {
+        console.log(err);
+    });
   },
 
 

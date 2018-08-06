@@ -43,7 +43,7 @@ App({
     return new Promise((resolve, reject) => {
       wx.getSetting({
         success: (res) => {
-          let authorize = !!res.authSetting['scope.userInfo']
+          let authorize = !!res.authSetting['scope.userInfo'];
           // _this.setAuthorize ? _this.setAuthorize(authorize) : _this.globalData.authorize = authorize;
           _this.globalData.authorize = authorize;
           wx.getUserInfo({

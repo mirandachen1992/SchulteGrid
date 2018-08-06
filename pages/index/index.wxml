@@ -11,7 +11,7 @@
 		<view class="container"  wx:if="{{showNum}}">
 		<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
 			<view 
-				class="{{num < item ? 'grid':'grid grid-disable' }}" 
+				class="'grid' {{num < item ? (clickId == item && item !== num + 1 ? 'test' : ''):'grid-disable' }}" 
 				style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
 				bind:touchstart="clickMe" 
 				id="{{item}}"
@@ -31,8 +31,8 @@
 				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</button>
 			</view>
 			<view class="buttons-bottom">
-				<button class="button" bindtap="start">开始挑战</button>
-				<button class="button" bindtap="toList">榜单</button>
+				<button class="button" bind:touchstart="start">开始挑战</button>
+				<button class="button" bind:touchstart="toList">榜单</button>
 			</view>
 		</view>
 	</view>

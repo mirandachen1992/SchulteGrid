@@ -1,5 +1,5 @@
 <image src="../../bg.png" alt="" mode="aspectFill" class="bg-img"></image>
-<image src="{{src}}" alt="" mode="widthFix" class="image"></image>
+<image src="{{src}}" alt="" mode="aspectFill" class="image" style="height: 34px;"></image>
 <view  wx:if="{{isShow}}">
     <view class="avatar-container">
         <open-data class="avatar" type="userAvatarUrl" animation="{{animationData1}}"></open-data>

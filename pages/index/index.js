@@ -15,7 +15,7 @@ Page({
     authorize: false,
     userInfo: {},
     topRecord: 0,
-    // clickId: 0,
+    clickId: 0,
     // timeShow: 0,
     startTime: 0,
     score: 0,
@@ -24,15 +24,22 @@ Page({
   onLoad: function() {
     let { currentSize } = this.data;
     this.setData({authorize: app.globalData.authorize, userInfo: app.globalData.userInfo})
-    let _this = this;
     this.awaitOpenId().then(openId => {
       getRecord(openId, currentSize).then(res => {
         this.setData({ topRecord: res });
       })
     });
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
 
   onShow: function () {
+    if(!app.globalData.authorize) {
+      wx.redirectTo({
+        url: '/pages/home/index'
+      })
+    }
     // this.setData({time: 0, showNum: false, num: 0})
   },
 
@@ -72,6 +79,7 @@ Page({
   clickMe: function(event) {
     let { num, currentSize, time, userInfo, openId } = this.data;
     let item = event.currentTarget.id;
+    this.setData({clickId: item});
     if (item == num + 1) {
       this.setData({
         num: Number(item)
@@ -101,7 +109,7 @@ Page({
 
   timer: function() {
     let { time, startTime } = this.data;
-    if (time < 9) {
+    if (time < 90) {
       // let test = parseFloat((time + 0.05))
       let date = new Date();
       let currentTime = ((date.getTime() - startTime)/1000).toFixed(2);
