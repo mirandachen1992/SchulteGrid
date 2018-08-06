@@ -1,4 +1,4 @@
-<image src="../../bg.png" alt="" mode="widthFix" class="bg-img"></image>
+<image src="../../bg.png" alt="" mode="aspectFill" class="bg-img"></image>
 <!-- <view class="{{authorize ? 'avatar-container-small' : 'avatar-container'}}"> -->
 <view class="avatar-container-small">
 	<open-data class="avatar" type="userAvatarUrl"></open-data>

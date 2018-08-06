@@ -8,6 +8,7 @@
     "navigationBarTitleText": "Demo",
     "backgroundColorTop":"#6B2C86",
     "backgroundColorBottom":"#0E033F",
+    "backgroundColor" : "#0E033F",
     "navigationBarTitleText": "舒尔特注意训练"
   },
   "networkTimeout": {

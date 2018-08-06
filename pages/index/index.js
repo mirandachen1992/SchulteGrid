@@ -1,4 +1,4 @@
-const { randomArray, setSize, timer } = require('../../utils/utils');
+const { setSize } = require('../../utils/utils');
 const { saveRecord, getRecord } = require('../../request/request');
 var interval;
 const app = getApp();
@@ -15,23 +15,10 @@ Page({
     authorize: false,
     userInfo: {},
     topRecord: 0,
-    animation:{},
-    clickId: 0,
-    timeShow: 0,
+    // clickId: 0,
+    // timeShow: 0,
     startTime: 0,
     score: 0,
-  },
-  onReady: function () {
-    // this.animation = wx.createAnimation({
-    //   duration: 300,
-    //   timingFunction: "ease",
-    //   delay: 0
-    // });
-    // if(!app.globalData.authorize) {
-    //   wx.redirectTo({
-    //     url: '/pages/home/index'
-    //   })
-    // }
   },
 
   onLoad: function() {
@@ -44,11 +31,13 @@ Page({
       })
     });
   },
+
   onShow: function () {
-    this.setData({time: 0, showNum: false, num: 0})
+    // this.setData({time: 0, showNum: false, num: 0})
   },
+
   onHide: function () {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   },
 
   onUnload: function () {
@@ -83,50 +72,42 @@ Page({
   clickMe: function(event) {
     let { num, currentSize, time, userInfo, openId } = this.data;
     let item = event.currentTarget.id;
-    // this.setData({clickId: Number(item)})
     if (item == num + 1) {
       this.setData({
         num: Number(item)
-      }, () => {
-        console.log(item)
       })
-      // this.animation.backgroundColor('#c5c5c5').step()
-      // this.animation.rotateX(180).backgroundColor('#c5c5c5').step()
-      // this.setData({ animation: this.animation.export() })
       // 完成
       if (item == currentSize * currentSize) {
-        clearInterval(this.interval);
         let {startTime} = this.data;
         let time = new Date();
         let pass = ((time.getTime() - startTime)/1000).toFixed(2);
+        clearInterval(this.interval);
         this.setData({ ...setSize(currentSize), showNum: false, status: 'success',score: pass })
-        // saveRecord({
-        //   openId: this.data.openId,
-        //   nickName: userInfo.nickName,
-        //   avatarUrl: userInfo.avatarUrl,
-        //   record: time,
-        //   type: currentSize
-        // }).then(data => {
-        //   getRecord(openId, currentSize).then(res => {
-        //     this.setData({ topRecord: res }, () => {
-        //       console.log('222')
-        //     });
-        //   })
-        // });
+        saveRecord({
+          openId: this.data.openId,
+          nickName: userInfo.nickName,
+          avatarUrl: userInfo.avatarUrl,
+          // record: time,
+          record: pass,
+          type: currentSize
+        }).then(data => {
+          getRecord(openId, currentSize).then(res => {
+            this.setData({ topRecord: res });
+          })
+        });
       }
-    } else if(num < item){
-      // this.animation.backgroundColor('#ffa20f').opacity(0.1).step()
-      // .backgroundColor('#f7f5f5').opacity(1).step()
-      // this.setData({ animation: this.animation.export() })
-    }
+    } 
   },
 
   timer: function() {
-    let { time } = this.data;
+    let { time, startTime } = this.data;
     if (time < 9) {
       // let test = parseFloat((time + 0.05))
-      let test = parseFloat((time + 1))
-      this.setData({ time: test });
+      let date = new Date();
+      let currentTime = ((date.getTime() - startTime)/1000).toFixed(2);
+      console.log((date.getTime() - startTime)/1000);
+      // let test = parseFloat((time + 1))
+      this.setData({ time: currentTime });
       // this.setData({timeShow: test.toFixed(2)})
     } else {
       clearInterval(this.interval);
@@ -137,7 +118,7 @@ Page({
   start: function(event) {
     let time = new Date();
     this.setData({ showNum: true, startTime: time.getTime(), time: 0, num: 0 }, () => {
-      this.interval = setInterval(this.timer, 1000);
+      this.interval = setInterval(this.timer, 100);
       // this.interval = setInterval(this.timer, 50);
     });
   },

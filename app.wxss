@@ -1,11 +1,3 @@
-page {
-	overflow:hidden; 
-position:fixed; 
-margin: 0px; 
-/*下面的是关键的设置100%显示*/ 
-background-size: 100% 100%; 
-}
-
 .bg-img {
     position: absolute;
     top: 0;

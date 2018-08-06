@@ -1,4 +1,4 @@
-<image src="../../bg.png" alt="" mode="widthFix" class="bg-img"></image>
+<image src="../../bg.png" alt="" mode="aspectFill" class="bg-img"></image>
 <radio-group class="radio-group" bindchange="radioChange">
   <label class="radio" wx:key="{{this}}" wx:for="{{sizes}}">
     <radio value="{{item}}" checked="{{item == chooseType}}" color="#226fbe"/>{{item}}✻{{item}}

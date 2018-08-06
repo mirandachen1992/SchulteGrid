@@ -131,7 +131,9 @@
 .text .status {
 	font-size:60rpx;
 }
-
+.text .score {
+	font-size: 14px;
+}
 .text .score text {
 	color: #fcad26;
 }
