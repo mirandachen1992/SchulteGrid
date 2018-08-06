@@ -16,7 +16,10 @@ Page({
     userInfo: {},
     topRecord: 0,
     animation:{},
-    clickId: 0
+    clickId: 0,
+    timeShow: 0,
+    startTime: 0,
+    score: 0,
   },
   onReady: function () {
     // this.animation = wx.createAnimation({
@@ -93,7 +96,10 @@ Page({
       // 完成
       if (item == currentSize * currentSize) {
         clearInterval(this.interval);
-        this.setData({ ...setSize(currentSize), showNum: false, status: 'success' })
+        let {startTime} = this.data;
+        let time = new Date();
+        let pass = ((time.getTime() - startTime)/1000).toFixed(2);
+        this.setData({ ...setSize(currentSize), showNum: false, status: 'success',score: pass })
         // saveRecord({
         //   openId: this.data.openId,
         //   nickName: userInfo.nickName,
@@ -117,8 +123,11 @@ Page({
 
   timer: function() {
     let { time } = this.data;
-    if (time < 90) {
-      this.setData({ time: Number((time + 0.01).toFixed(2)) });
+    if (time < 9) {
+      // let test = parseFloat((time + 0.05))
+      let test = parseFloat((time + 1))
+      this.setData({ time: test });
+      // this.setData({timeShow: test.toFixed(2)})
     } else {
       clearInterval(this.interval);
       this.setData({ showNum: false, status: 'fail' })
@@ -126,8 +135,11 @@ Page({
   },
 
   start: function(event) {
-    this.setData({ showNum: true });
-    this.interval = setInterval(this.timer, 10);
+    let time = new Date();
+    this.setData({ showNum: true, startTime: time.getTime(), time: 0, num: 0 }, () => {
+      this.interval = setInterval(this.timer, 1000);
+      // this.interval = setInterval(this.timer, 50);
+    });
   },
 
   toList: function(event) {

@@ -1,3 +1,4 @@
+<image src="../../bg.png" alt="" mode="widthFix" class="bg-img"></image>
 <!-- <view class="{{authorize ? 'avatar-container-small' : 'avatar-container'}}"> -->
 <view class="avatar-container-small">
 	<open-data class="avatar" type="userAvatarUrl"></open-data>
@@ -22,7 +23,10 @@
 		<view class="modal" wx:if="{{!showNum}}">
 		</view>
 		<view class="buttons-group" wx:if="{{!showNum}}">
-			<view class="text">{{statusText[status]}}</view>
+			<view class="text">
+				<view class="status">{{statusText[status]}}</view>
+				<view class="score" wx:if="{{status == 'success'}}">成绩:<text>{{score}}</text>s</view>
+			</view>
 			<view class="buttons">
 				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</button>
 			</view>

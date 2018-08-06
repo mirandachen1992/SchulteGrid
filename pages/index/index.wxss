@@ -124,11 +124,16 @@
 
 
 .text {
+	margin-bottom:60rpx;
+	text-align:center;
+	color:#ffffff;
+}
+.text .status {
 	font-size:60rpx;
-	margin-bottom:80rpx;
-  text-align:center;
-  color:#ffffff;
+}
 
+.text .score text {
+	color: #fcad26;
 }
 .card view {
 	font-size: 20rpx;

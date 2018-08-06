@@ -1,3 +1,4 @@
+<image src="../../bg.png" alt="" mode="widthFix" class="bg-img"></image>
 <image src="{{src}}" alt="" mode="widthFix" class="image"></image>
 <view  wx:if="{{isShow}}">
     <view class="avatar-container">

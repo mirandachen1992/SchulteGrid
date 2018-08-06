@@ -8,6 +8,7 @@ Page({
     authorize: false,
     src: '../../logo.png',
     modalSrc: '../../info.png',
+    bgSrc: '../../bg.png',
     animationData1: {},
     animationData2: {},
     animationData3: {},
