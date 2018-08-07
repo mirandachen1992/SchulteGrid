@@ -1,5 +1,5 @@
 const HOST = 'https://sg.eldesign.cn' ;
-const ImgHost = 'http://47.98.47.153:8080';
+// const ImgHost = 'http://47.98.47.153:8080';
 // const HOST = 'http://localhost:8080';
 // const HOST =  'http://47.98.47.153:8080'
 
@@ -70,7 +70,8 @@ function shareImg () {
       url: `${HOST}/getMiniProgramQrcode`,
       method: 'GET',
       success:function(res) {
-        resolve(`${ImgHost}/miniprogramqrcode.png`)
+        // resolve(`${ImgHost}/miniprogramqrcode.png`)
+        resolve(res)
       }
     })
   })

@@ -1,10 +1,22 @@
+@keyframes button {
+    from {transform: translateX(500px)}
+    to {transform: translateX(0)}
+}
+
+@keyframes button1 {
+    0% {transform: translateX(500px)}
+    20% {transform: translateX(500px)}
+    100% {transform: translateX(0)}
+}
+
+
 .authorize-button {
     color: #fff;
     box-shadow: 0 6px #226fbe;
 	width: 50%;
     margin-bottom: 20px;
     background: #5cbcf6;
-    transform: translate(500px);
+    /* transform: translate(500px); */
 }
 
 .authorize-button:active {
@@ -12,11 +24,27 @@
     top: 6px;
 }
 
+.first-button {
+    animation: button 0.64s ease-out;
+}
+
+.second-button {
+    animation: button 0.8s ease-out;
+}
+
+@keyframes avatar {
+    from {width: 0; height: 0;}
+    to {width: 150rpx; height: 150rpx;}
+}
+
+
+
 .avatar {
 	border-radius: 50%;
 	overflow: hidden;
 	display: block;
     margin: auto;
+    animation: avatar 0.5s;
 }
 
 .avatar-container {

@@ -9,9 +9,6 @@ Page({
     src: '../../logo.png',
     modalSrc: '../../info.png',
     bgSrc: '../../bg.png',
-    animationData1: {},
-    animationData2: {},
-    animationData3: {},
     isShow: false,
     showModal: false,
     showImg: false
@@ -23,29 +20,6 @@ Page({
   },
   animation: function () {
     this.setData({isShow: true})
-    var animation1 = wx.createAnimation({
-      duration: 300,
-      timingFunction: "ease-out",
-    });
-    var animation2 = wx.createAnimation({
-        duration: 300,
-        timingFunction: "ease-out",
-    });
-    var animation3 = wx.createAnimation({
-        duration: 300,
-        delay: 40,
-        timingFunction: "ease-out",
-    });
-
-    animation1.width('0').height('0').step({ duration: 50 }).width('150rpx').height('150rpx').step();
-    animation2.translateX('500px').step().translateX(0).step();
-    animation3.translateX('500px').step().translateX(0).step();
-    this.setData({ 
-        animationData1: animation1.export(), 
-        animationData2: animation2.export(), 
-        animationData3: animation3.export() 
-    })
-
   },
   onUnload: function () {
       this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
@@ -113,7 +87,6 @@ Page({
     return {
       title: '舒尔特方格注意力训练',
       path: '/pages/home/index',
-
     }
   },
 })

@@ -71,7 +71,7 @@
 .buttons-group {
 	position: absolute;
 	width: 90%;
-	bottom: 10%;
+	bottom: 0;
 	padding: 0 5% 0 5%;
 }
 .buttons {
@@ -99,32 +99,37 @@
 	/*justify-content:space-around;*/
 }
 .buttons-bottom button {
-	width: 80%;
-	margin-bottom: 40rpx;
+	width: 70%;
+	margin-bottom: 30rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 	border-radius: 40rpx;
 }
-.buttons-bottom button:first-child {
+.buttons-bottom .premary-button {
 	background: #fcad26;
 	color: #ffffff;
 }
 
-.buttons-bottom button:first-child:active {
+.buttons-bottom .premary-button:active {
 	background: #f39b04;
 }
 
 
-.buttons-bottom button:last-child {
+.buttons-bottom .default-button {
+	color: #5cbcf6;
+	border: 1px solid #5cbcf6;
+	background: transparent;
+
+}
+.buttons-bottom .active-button {
 	color: #fcad26;
 	border: 1px solid #fcad26;
 	background: transparent;
 
 }
 
-
 .text {
-	margin-bottom:60rpx;
+	margin-bottom:30rpx;
 	text-align:center;
 	color:#ffffff;
 }
