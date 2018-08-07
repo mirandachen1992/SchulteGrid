@@ -72,5 +72,6 @@ App({
   onError: function(msg) {
     console.log(msg)
   },
+ 
   globalData: {}
 })

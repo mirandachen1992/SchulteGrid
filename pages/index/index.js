@@ -1,5 +1,5 @@
 const { setSize } = require('../../utils/utils');
-const { saveRecord, getRecord } = require('../../request/request');
+const { saveRecord, getRecord, shareImg } = require('../../request/request');
 var interval;
 const app = getApp();
 
@@ -19,6 +19,8 @@ Page({
     // timeShow: 0,
     startTime: 0,
     score: 0,
+    showModal: false,
+    url: ''
   },
 
   onLoad: function() {
@@ -29,14 +31,14 @@ Page({
         this.setData({ topRecord: res });
       })
     });
-    wx.showShareMenu({
-      withShareTicket: true
-    })
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // })
   },
 
   onShow: function () {
     if(!app.globalData.authorize) {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/home/index'
       })
     }
@@ -135,6 +137,121 @@ Page({
     wx.navigateTo({
       url: '/pages/list/index'
     })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '舒尔特方格注意力训练',
+      path: '/pages/home/index',
+    }
+  },
+
+  share: function () {
+    let _this = this;
+    let { userInfo, topRecord, currentSize } = this.data;
+    shareImg().then(data => {
+      this.setData({url: data})
+    this.setData({showModal: true})
+      
+      //2. canvas绘制文字和图片
+      const ctx = wx.createCanvasContext('myCanvas');
+      var imgPath = data
+        var bgImgPath = '../../bg.png';
+        
+        ctx.setFillStyle('#ffffff')
+        ctx.fillRect(0, 0, 300, 350);
+        
+        // ctx.drawImage(imgPath,    30, 550, 60, 60);
+        // ctx.drawImage(bgImgPath,  0, 0, '100%', '100%');
+        ctx.drawImage(imgPath, 30, 10, 240, 240);
+
+        ctx.save()
+        ctx.beginPath()
+        ctx.arc(40, 300, 30, 0, 2*Math.PI)
+        ctx.clip()
+        ctx.drawImage(userInfo.avatarUrl, 10, 270, 60, 60);
+        // ctx.drawImage(res.tempFilePath, 25, 25)
+        ctx.restore()
+        
+  
+        ctx.setFontSize(14)
+        ctx.setFillStyle('#6F6F6F')
+        ctx.fillText(userInfo.nickName, 80, 280)
+  
+        ctx.setFontSize(14)
+        ctx.setFillStyle('#111111')
+        ctx.fillText(`${currentSize}✻${currentSize}我的最好成绩是${topRecord}秒哟`, 80, 300)
+  
+        ctx.setFontSize(12)
+        ctx.setFillStyle('#111111')
+        ctx.fillText('长按扫码快来和我PK', 80, 330)
+        ctx.draw()
+
+    })
+
+  //   wx.canvasToTempFilePath({
+  //     x: 0,
+  //     y: 0,
+  //     width: 600,
+  //     height: 800,
+  //     destWidth: 600,
+  //     destHeight:800,
+  //     canvasId: 'myCanvas',
+  //     success: function(res) {
+  //         console.log(res.tempFilePath);
+  //         _this.setData({
+  //             shareImgSrc : res.tempFilePath
+  //         })
+
+  //     },
+  //     fail:function (res) {
+  //         console.log(res)
+  //     }
+  // })
+    //1. 请求后端API生成小程序码
+  },
+  hideModal: function () {
+    this.setData({showModal: false});
+  },
+
+  saveImg: function ()  {
+    let shareImgSrc = '';
+    wx.canvasToTempFilePath({
+      x: 0,
+      y: 0,
+      width: 300,
+      height: 350,
+      destWidth: 300,
+      destHeight:350,
+      canvasId: 'myCanvas',
+      success: function(res) {
+          console.log(res.tempFilePath);
+          // that.setData({
+              shareImgSrc = res.tempFilePath
+          // })
+          wx.saveImageToPhotosAlbum({
+              filePath:shareImgSrc,
+              success(res) {
+                  wx.showModal({
+                      title: '存图成功',
+                      content: '图片成功保存到相册了，去发圈噻~',
+                      showCancel:false,
+                      confirmText:'好哒',
+                      confirmColor:'#72B9C3',
+                      success: function(res) {
+                          if (res.confirm) {
+                              console.log('用户点击确定');
+                          }
+                          // that.hideShareImg()
+                      }
+                  })
+              }
+          })
+      },
+      fail:function (res) {
+          console.log(res)
+      }
+  })
+  //4. 当用户点击分享到朋友圈时，将图片保存到相册
   }
 
 })

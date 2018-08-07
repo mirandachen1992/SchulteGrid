@@ -1,4 +1,5 @@
-const HOST = 'https://sg.eldesign.cn';
+const HOST = 'https://sg.eldesign.cn' ;
+const ImgHost = 'http://47.98.47.153:8080';
 // const HOST = 'http://localhost:8080';
 // const HOST =  'http://47.98.47.153:8080'
 
@@ -63,4 +64,35 @@ function getList (type) {
   })
 }
 
-module.exports = { saveRecord, getOpenId, getRecord, getList };
+function shareImg () {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: `${HOST}/getMiniProgramQrcode`,
+      method: 'GET',
+      success:function(res) {
+        resolve(`${ImgHost}/miniprogramqrcode.png`)
+      }
+    })
+  })
+}
+
+// function getwxacodeunlimit (access_token,) {
+//   return new Promise((resolve, reject) => {
+//     wx.request({
+//       url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${access_token}`,
+//       method: 'POST',
+//       data: {
+//         scene,
+//         page
+//      },
+//       header: {
+//         'content-type': 'application/json' // 默认值
+//       },
+//       success:function(res) {
+//         resolve(res.data.data)
+//       }
+//     })
+//   })
+// }
+
+module.exports = { saveRecord, getOpenId, getRecord, getList, shareImg };

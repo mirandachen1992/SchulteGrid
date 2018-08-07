@@ -20,7 +20,7 @@
 			</view>
 		</view>
 		</view>
-		<view class="modal" wx:if="{{!showNum}}">
+		<view class="shadow" wx:if="{{!showNum}}">
 		</view>
 		<view class="buttons-group" wx:if="{{!showNum}}">
 			<view class="text">
@@ -33,9 +33,21 @@
 			<view class="buttons-bottom">
 				<button class="button" bind:touchstart="start">开始挑战</button>
 				<button class="button" bind:touchstart="toList">榜单</button>
+				<button class="button" bind:touchstart="share">分享到朋友圈</button>
 			</view>
+			<!-- <image src="{{url}}" mode="aspectFill" wx:if="{{url}}"></image> -->
 		</view>
 	</view>
 	<view>
-</view>
+	</view>
+	<view class="modal-container">
+		<view wx:if="{{showModal}}" class="modal-content">
+			<canvas canvas-id="myCanvas" style="width: 100%; height: 350px;"></canvas>
+			<view class="buttons-bottom">
+				<button class="button" bind:touchstart="saveImg">保存分享图</button>
+			</view>
+		</view>
+	</view>
+	<view class="{{showModal ? 'show-modal' : 'hide-modal'}}" bindtap="hideModal"></view>
+
 </view>

@@ -57,9 +57,9 @@ Page({
 
   onLoad: function() {
     let _this = this;
-    wx.showShareMenu({
-        withShareTicket: true
-    })
+    // wx.showShareMenu({
+    //     withShareTicket: true
+    // })
 
     // if (app.globalData.authorize) {
     //   this.setData({ authorize: app.globalData.authorize })
@@ -108,5 +108,12 @@ Page({
   },
   loadImg: function () {
       this.setData({showImg: true})
-  }
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '舒尔特方格注意力训练',
+      path: '/pages/home/index',
+
+    }
+  },
 })
