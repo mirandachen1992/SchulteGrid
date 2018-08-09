@@ -2,9 +2,6 @@ const app = getApp();
 
 Page({
   data: {
-    // sizes: [3, 4, 5],
-    // chooseType: 3,
-    // list: []
     authorize: false,
     src: '../../logo.png',
     modalSrc: '../../info.png',

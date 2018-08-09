@@ -113,13 +113,9 @@ Page({
   timer: function() {
     let { time, startTime } = this.data;
     if (time < 90) {
-      // let test = parseFloat((time + 0.05))
       let date = new Date();
       let currentTime = ((date.getTime() - startTime)/1000).toFixed(2);
-      console.log((date.getTime() - startTime)/1000);
-      // let test = parseFloat((time + 1))
       this.setData({ time: currentTime });
-      // this.setData({timeShow: test.toFixed(2)})
     } else {
       clearInterval(this.interval);
       this.setData({ showNum: false, status: 'fail' })
@@ -139,6 +135,7 @@ Page({
       url: '/pages/list/index'
     })
   },
+
   onShareAppMessage: function (res) {
     return {
       title: '舒尔特方格注意力训练',
@@ -156,21 +153,9 @@ Page({
         fail: function (err) {
           reject(err)
         }
-    })
+      })
     })
   },
-
-  // downloadImg2: function (url) {
-  //   return new Promise ((resolve, reject) => {
-  //     wx.downloadFile({
-  //       url,
-  //       success: function (res2) {
-  //           //缓存头像图片
-  //         resolve(res2.tempFilePath);
-  //       }
-  //   })
-  //   })
-  // },
 
   draw: function (img1, img2) {
     let { userInfo, currentSize, topRecord } = this.data;
@@ -179,8 +164,6 @@ Page({
       ctx.setFillStyle('#ffffff')
       ctx.fillRect(10, 0, 280, 350);
       
-      // ctx.drawImage(imgPath,    30, 550, 60, 60);
-      // ctx.drawImage(bgImgPath,  0, 0, '100%', '100%');
       ctx.drawImage(img1, 30, 10, 240, 240);
 
       ctx.save()
@@ -188,9 +171,7 @@ Page({
       ctx.arc(50, 300, 30, 0, 2*Math.PI)
       ctx.clip()
       ctx.drawImage(img2, 20, 270, 60, 60);
-      // ctx.drawImage(res.tempFilePath, 25, 25)
       ctx.restore()
-      
 
       ctx.setFontSize(14)
       ctx.setFillStyle('#6F6F6F')
@@ -215,17 +196,18 @@ Page({
     let { userInfo } = this.data;
     let img1,img2 = '';
     wx.showLoading();
+    // 1.首先拿到二维码图片地址
     shareImg().then(data => {
+      // 2.将二维码图片和头像保存缓存
       Promise.all([this.downloadImg(data.data.data), this.downloadImg(userInfo.avatarUrl)]).then(data => {
         [img1, img2] = data;
+        // 3. 绘制canvas
         this.draw(img1, img2);
-        // this.setData({url: data})
         this.setData({showModal: true})
       }).catch(err => {
-        debugger
+        console.log(err);
         wx.hideLoading();
       })
-      //2. canvas绘制文字和图片
     })
   },
 
@@ -236,6 +218,7 @@ Page({
   saveImg: function ()  {
     let shareImgSrc = '';
     let _this = this;
+    // 4. 点击保存按钮将图片保存相册
     wx.canvasToTempFilePath({
       x: 0,
       y: 0,
@@ -245,16 +228,13 @@ Page({
       destHeight:700,
       canvasId: 'myCanvas',
       success: function(res) {
-          console.log(res.tempFilePath);
-          // that.setData({
-              shareImgSrc = res.tempFilePath
-          // })
+          shareImgSrc = res.tempFilePath
           wx.saveImageToPhotosAlbum({
               filePath:shareImgSrc,
               success(res) {
                   wx.showModal({
                       title: '存图成功',
-                      content: '图片成功保存到相册了，记得去发朋友圈哦',
+                      content: '图片成功保存到相册了，记得分享哦',
                       showCancel:false,
                       confirmText:'好哒',
                       confirmColor:'#72B9C3',
@@ -272,7 +252,9 @@ Page({
           console.log(res)
       }
   })
-  //4. 当用户点击分享到朋友圈时，将图片保存到相册
+  },
+  test: function () {
+    
   }
 
 })
