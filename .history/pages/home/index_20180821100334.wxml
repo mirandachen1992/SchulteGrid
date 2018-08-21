@@ -8,7 +8,7 @@
     <button open-type="getUserInfo" class="authorize-button first-button" bindgetuserinfo="getUserInfo" animation="{{animationData2}}">开始游戏</button>
     <button class="authorize-button second-button" bindtap="goToList" animation="{{animationData3}}">排行榜</button>
     <view class="info" bindtap="goToInfo">介绍和规则</view>
-    <view class="info"><button class="contact-btn" open-type="contact" />联系客服</view>
+    <view class="info" bindtap="goToInfo">联系客服</view>
 </view>
 <view class="modal-container">
     <view wx:if="{{showModal}}" class="modal-content">
