@@ -20,7 +20,9 @@ App({
         console.log(err)
       }
     });
+    this.startAudio();
     this.setAuthorize();
+    
     // wx.getSetting({
     //   success: (res) => {
     //     let authorize = !!res.authSetting['scope.userInfo']
@@ -37,6 +39,28 @@ App({
     // })
   },
 
+  stopAudio: function () {
+    this.globalData.audio = false;
+    this.buttonAudio.destroy();
+    this.clickAudio.destroy();
+    this.clockAudio.destroy();
+    this.successAudio.destroy();
+  },
+
+  startAudio: function () {
+    this.globalData.audio = true;
+
+    this.buttonAudio = wx.createInnerAudioContext()
+    this.clickAudio = wx.createInnerAudioContext()
+    this.clockAudio = wx.createInnerAudioContext()
+    this.successAudio = wx.createInnerAudioContext()
+    
+    this.buttonAudio.src = '/img/button.mp3'
+    this.clickAudio.src='/img/click.mp3'
+    this.clockAudio.src='/img/clock1.mp3'
+    this.successAudio.src= '/img/success.mp3'
+    this.clockAudio.loop = true;
+  },
 
   setAuthorize: function () {
     const _this = this;

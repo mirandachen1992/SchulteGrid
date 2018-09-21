@@ -3,23 +3,30 @@ const app = getApp();
 Page({
   data: {
     authorize: false,
-    src: '../../logo.png',
+    src: '../../img/title.png',
     modalSrc: '../../info.png',
-    bgSrc: '../../bg.png',
+    bgSrc: '../../bacground.png',
     isShow: false,
-    showModal: false,
-    showImg: false
+    showModal: '',
+    showImg: false,
+    audio: true,
+    showtest: false
   },
   onShow: function () {
-    this.setData({isShow: true}, () => {
-        this.animation();
-    })
+    // this.setData({showtest: true})
+    // this.setData({isShow: true}, () => {
+    //     this.animation();
+    // })
+  },
+  onReady: function () {
+    this.setData({showtest: true})
+
   },
   animation: function () {
-    this.setData({isShow: true})
+    // this.setData({isShow: true})
   },
   onUnload: function () {
-      this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
+      // this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
 
   },
   onHide: function() {
@@ -28,6 +35,7 @@ Page({
 
   onLoad: function() {
     let _this = this;
+    
     // wx.showShareMenu({
     //     withShareTicket: true
     // })
@@ -52,6 +60,8 @@ Page({
   },
 
   getUserInfo: function(info, err) {
+    debugger
+    app.buttonAudio.play()
     //   判断是否授权成功
     app.setAuthorize().then(data => {
         this.setData({ authorize: true });
@@ -66,16 +76,20 @@ Page({
 
 
   goToList: function () {
+    app.buttonAudio.play()
     this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
     wx.navigateTo({
         url: '/pages/list/index'
     })
   },
   goToInfo: function () {
-    this.setData({showModal: true})
+    this.setData({showModal: 'info'})
+  },
+  goToSetting: function () {
+    this.setData({showModal: 'setting'})
   },
   hideModal: function () {
-      this.setData({showModal: false});
+      this.setData({showModal: ''});
   },
   loadImg: function () {
       this.setData({showImg: true})
@@ -86,4 +100,14 @@ Page({
       path: '/pages/home/index',
     }
   },
+
+  switchChange: function (e) {
+    if(e.detail.value && !app.globalData.audio) {
+      this.setData({audio: true})
+      app.startAudio();
+    } else if (!e.detail.value && app.globalData.audio) {
+      this.setData({audio: false})
+      app.stopAudio();
+    }
+  }
 })

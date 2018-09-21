@@ -31,10 +31,7 @@ Page({
         this.setData({ topRecord: res });
       })
     });
-    
-    // wx.showShareMenu({
-    //   withShareTicket: true
-    // })
+
   },
 
   onShow: function () {
@@ -43,14 +40,14 @@ Page({
         url: '/pages/home/index'
       })
     }
-    // this.setData({time: 0, showNum: false, num: 0})
   },
 
   onHide: function () {
     // clearInterval(this.interval);
   },
-
+  
   onUnload: function () {
+    app.clockAudio.stop();
     clearInterval(this.interval);
   },
 
@@ -70,6 +67,7 @@ Page({
   },
 
   choose: function(event) {
+    app.buttonAudio.play()
     let { openId } = this.data;
     let size = Number(event.target.id);
     this.setData({ ...setSize(size), status: '' });
@@ -82,6 +80,7 @@ Page({
   clickMe: function(event) {
     let { num, currentSize, time, userInfo, openId } = this.data;
     let item = event.currentTarget.id;
+    app.clickAudio.play();
     this.setData({clickId: item});
     if (item == num + 1) {
       this.setData({
@@ -93,7 +92,10 @@ Page({
         let time = new Date();
         let pass = ((time.getTime() - startTime)/1000).toFixed(2);
         clearInterval(this.interval);
-        this.setData({ ...setSize(currentSize), showNum: false, status: 'success',score: pass })
+        this.setData({ ...setSize(currentSize), showNum: false, status: 'success',score: pass }, () => {
+          app.clockAudio.stop();
+          app.successAudio.play();
+        })
         saveRecord({
           openId: this.data.openId,
           nickName: userInfo.nickName,
@@ -117,20 +119,24 @@ Page({
       let currentTime = ((date.getTime() - startTime)/1000).toFixed(2);
       this.setData({ time: currentTime });
     } else {
+      app.clockAudio.stop();
       clearInterval(this.interval);
       this.setData({ showNum: false, status: 'fail' })
     }
   },
 
   start: function(event) {
+    app.buttonAudio.play()
     let time = new Date();
     this.setData({ showNum: true, startTime: time.getTime(), time: 0, num: 0 }, () => {
+      app.clockAudio.play();
       this.interval = setInterval(this.timer, 100);
       // this.interval = setInterval(this.timer, 50);
     });
   },
 
   toList: function(event) {
+    app.buttonAudio.play()
     wx.navigateTo({
       url: '/pages/list/index'
     })
@@ -192,6 +198,7 @@ Page({
 
 
   share: function () {
+    app.buttonAudio.play()
     let _this = this;
     let { userInfo } = this.data;
     let img1,img2 = '';
