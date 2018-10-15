@@ -20,7 +20,9 @@ Page({
     startTime: 0,
     score: 0,
     showModal: false,
-    url: ''
+    url: '',
+    hasStarted:false,
+    closeGrid:false,
   },
 
   onLoad: function() {
@@ -78,6 +80,9 @@ Page({
 
   // Event handler.
   clickMe: function(event) {
+    if(!this.data.hasStarted){
+      this.start();
+    }
     let { num, currentSize, time, userInfo, openId } = this.data;
     let item = event.currentTarget.id;
     app.clickAudio.play();
@@ -92,7 +97,7 @@ Page({
         let time = new Date();
         let pass = ((time.getTime() - startTime)/1000).toFixed(2);
         clearInterval(this.interval);
-        this.setData({ ...setSize(currentSize), showNum: false, status: 'success',score: pass }, () => {
+        this.setData({ ...setSize(currentSize),closeGrid:true, showNum: false, status: 'success',score: pass }, () => {
           app.clockAudio.stop();
           app.successAudio.play();
         })
@@ -128,7 +133,7 @@ Page({
   start: function(event) {
     app.buttonAudio.play()
     let time = new Date();
-    this.setData({ showNum: true, startTime: time.getTime(), time: 0, num: 0 }, () => {
+    this.setData({hasStarted:true, showNum: true, startTime: time.getTime(), time: 0, num: 0 }, () => {
       app.clockAudio.play();
       this.interval = setInterval(this.timer, 100);
       // this.interval = setInterval(this.timer, 50);

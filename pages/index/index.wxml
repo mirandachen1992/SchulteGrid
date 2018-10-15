@@ -1,38 +1,36 @@
-<image src="../../img/bacground.png" alt="" mode="aspectFill" class="bg-img"></image>
+<image src="../../img/game_bg.png" alt="" mode="aspectFill" class="bg-img"></image>
 <!-- <view class="{{authorize ? 'avatar-container-small' : 'avatar-container'}}"> -->
-<view class="avatar-container-small">
-	<open-data class="avatar" type="userAvatarUrl"></open-data>
-	<open-data class="avatar-name" type="userNickName"></open-data>
-</view>
 <view class="app">
-	<view class="card"><view>最好</view>{{topRecord}}</view>
-	<view class="card"><view>计时</view>{{time}}</view>
+	<!-- <view class="card"><view>最好</view>{{topRecord}}</view>
+	<view class="card"><view>计时</view>{{time}}</view> -->
 	<view class="area">
-		<view class="container"  wx:if="{{showNum}}">
-		<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
-			<view 
-				class="'grid' {{num < item ? (clickId == item && item !== num + 1 ? 'test' : ''):'grid-disable' }}" 
-				style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
-				bind:touchstart="clickMe" 
-				id="{{item}}"
-			>
-				<text>{{showNum ? item : ''}}</text>
+			<ul class="buttons">
+					<!-- <view class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</view> -->
+					<li  class="{{currentSize == item ? 'active-tab':'normal-tab'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</li>
+			</ul>
+			<view class="container" wx:if="{{!closeGrid}}">
+				<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
+					<view 
+							class="'grid' {{num < item ? (clickId == item && item !== num + 1 ? 'test' : ''):'grid-disable' }}" 
+							style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
+							bind:touchstart="clickMe" 
+							id="{{item}}"
+						>
+						<text>{{item}}</text>
+					</view>
+				</view>
 			</view>
-		</view>
-		</view>
-		<view class="shadow" wx:if="{{!showNum}}">
-		</view>
-		<view class="buttons-group" wx:if="{{!showNum}}">
+
+
+		<view class="buttons-group" wx:if="{{closeGrid}}">
 			<view class="text">
-				<view class="status">{{statusText[status]}}</view>
-				<view class="score" wx:if="{{status == 'success'}}">成绩:<text>{{score}}</text>s</view>
-			</view>
-			<view class="buttons">
-				<button class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</button>
+				<!-- <view class="status">{{statusText[status]}}</view>
+				<view class="score" wx:if="{{status == 'success'}}">成绩:<text>{{score}}</text>s</view> -->
+				<view class="score"><text>0.25</text>s</view>
 			</view>
 			<view class="buttons-bottom">
-				<button class="premary-button" bind:touchstart="start">开始挑战</button>
-				<button class="active-button" bind:touchstart="toList">榜单</button>
+				<button class="premary-button" bind:touchstart="start">继续挑战</button>
+				<button class="active-button" bind:touchstart="toList">查看榜单</button>
 				<button class="default-button" bind:touchstart="share">分享给好友</button>
 			</view>
 			<!-- <image src="{{url}}" mode="aspectFill" wx:if="{{url}}"></image> -->

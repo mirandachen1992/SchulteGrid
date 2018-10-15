@@ -13,20 +13,20 @@ Page({
     showtest: false
   },
   onShow: function () {
-    // this.setData({showtest: true})
-    // this.setData({isShow: true}, () => {
-    //     this.animation();
-    // })
+    this.setData({showtest: true})
+    this.setData({isShow: true}, () => {
+        this.animation();
+    })
   },
   onReady: function () {
     this.setData({showtest: true})
 
   },
   animation: function () {
-    // this.setData({isShow: true})
+     this.setData({isShow: true})
   },
   onUnload: function () {
-      // this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
+     this.setData({isShow: false, animationData1: {}, animationData2: {}, animationData3: {}})
 
   },
   onHide: function() {
@@ -36,31 +36,30 @@ Page({
   onLoad: function() {
     let _this = this;
     
-    // wx.showShareMenu({
-    //     withShareTicket: true
-    // })
+    wx.showShareMenu({
+        withShareTicket: true
+    })
 
-    // if (app.globalData.authorize) {
-    //   this.setData({ authorize: app.globalData.authorize })
-    //   wx.getUserInfo({
-    //     success: function(res) {
-    //         app.globalData.userInfo = res.userInfo
-    //     }
-    //   })
-    // } else {
-    //   app.setAuthorize = authorize => {
-    //     this.setData({ authorize });
-    //     wx.getUserInfo({
-    //       success: function(res) {
-    //         app.globalData.userInfo = res.userInfo;
-    //       }
-    //     })
-    //   }
-    // }
+    if (app.globalData.authorize) {
+      this.setData({ authorize: app.globalData.authorize })
+      wx.getUserInfo({
+        success: function(res) {
+            app.globalData.userInfo = res.userInfo
+        }
+      })
+    } else {
+      app.setAuthorize = authorize => {
+        this.setData({ authorize });
+        wx.getUserInfo({
+          success: function(res) {
+            app.globalData.userInfo = res.userInfo;
+          }
+        })
+      }
+    }
   },
 
   getUserInfo: function(info, err) {
-    debugger
     app.buttonAudio.play()
     //   判断是否授权成功
     app.setAuthorize().then(data => {

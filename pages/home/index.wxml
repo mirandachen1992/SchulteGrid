@@ -2,19 +2,7 @@
     <image src="../../img/background.png" alt="" mode="aspectFill" class="bg-img"></image>
     <image src="../../img/title.png" alt="" mode="aspectFit" class="title-image" style="height: 135rpx;"></image>
     <view class="logo" wx:if="{{showtest}}">
-        <view class="logo1">
-            <view class="logo2">
-                <view class="logo3">
-                    <view class="logo4">
-                        <view class="logo5">
-                            <view class="logo6">
-                                <view class="logo7"></view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
+        <image src="../../img/logo.png" alt="" mode="aspectFit"  style="height: 327rpx;"></image>
     </view>
     <!-- <image src="../../img/logo.png" alt="" mode="aspectFit" class="image" style="height: 300rpx;"></image> -->
     <view  wx:if="{{isShow}}">
