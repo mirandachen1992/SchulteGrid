@@ -26,12 +26,12 @@
 			<view class="text">
 				<!-- <view class="status">{{statusText[status]}}</view>
 				<view class="score" wx:if="{{status == 'success'}}">成绩:<text>{{score}}</text>s</view> -->
-				<view class="score"><text>0.25</text>s</view>
+				<view class="score" wx:if="{{status == 'success'}}"><text>{{score}}</text>s</view>
 			</view>
 			<view class="buttons-bottom">
-				<button class="premary-button" bind:touchstart="start">继续挑战</button>
-				<button class="active-button" bind:touchstart="toList">查看榜单</button>
+				<button class="premary-button" bind:touchstart="showGrid">继续挑战</button>
 				<button class="default-button" bind:touchstart="share">分享给好友</button>
+				<button class="active-button" bind:touchstart="toList">查看榜单</button>
 			</view>
 			<!-- <image src="{{url}}" mode="aspectFill" wx:if="{{url}}"></image> -->
 		</view>

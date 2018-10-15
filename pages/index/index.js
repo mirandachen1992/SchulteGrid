@@ -140,6 +140,11 @@ Page({
     });
   },
 
+  showGrid:function(event){
+    this.setData({closeGrid:false })
+      this.start();
+  },
+
   toList: function(event) {
     app.buttonAudio.play()
     wx.navigateTo({
