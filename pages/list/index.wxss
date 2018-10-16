@@ -5,10 +5,10 @@
 
 .list {
 	width: 80%;
-	min-height: 700rpx;
-	margin: 40rpx auto;
-	
-	background: #ededed;
+	min-height: 900rpx;
+	margin: 80rpx auto;	
+	background: url(https://sg.eldesign.cn/SchulteGrid/img/rankinglist_pop.png) no-repeat;
+	background-size: 100% 100%;
 	border-radius: 20rpx;
 }
 
@@ -18,25 +18,58 @@
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	color: rgb(238, 255, 254);
+	font-family: "Lantinghei SC";
 
+}
+.list-tab{
+	display: inline-block;
+}
+.list-intro{
+	font-size: 22rpx;
+	color: rgb(0, 109, 127);
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .list-container {
 	height: 360px;
 	overflow: auto;
+	padding:0 20rpx;
 }
 .list-content {
 	display: flex;
 	justify-content: space-between;
-	padding: 40rpx;
+	padding: 25rpx 40rpx;
 	font-size: 30rpx;
 	font-size: 12px;
 
 }
-.list image {
-	width: 80rpx;
-	height: 80rpx;
+.list .avatar{
+	width:75rpx;
+	height: 82rpx;
 	float: left;
+}
+.list .avatar_1st{
+	background: url(https://sg.eldesign.cn/SchulteGrid/img/1st_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .avatar_2nd{
+	background: url(https://sg.eldesign.cn/SchulteGrid/img/2nd_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+.list .avatar_3rd{
+	background: url(https://sg.eldesign.cn/SchulteGrid/img/3rd_icon.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.list image {
+	width: 68rpx;
+	height: 68rpx;
+	float: left;
+	position:relative;
+	top:15rpx;
 	border-radius: 50%;
 	overflow: hidden;
 }
@@ -54,7 +87,8 @@
 	margin-right: 5%;
 	overflow: hidden;
  	text-overflow: ellipsis;
- 	white-space: nowrap;
+	 white-space: nowrap;
+	 color: rgb(238, 255, 254);
 }
 .nickName {
 }
@@ -64,9 +98,7 @@
 	margin-right: 10px;
 }
 
-.list .number::before {
-	content: 'No.';
-	color: #fcad26;
-	font-size: 14px;
+.list .record{
+	color: rgb(238, 255, 254);
 }
 

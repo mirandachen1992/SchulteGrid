@@ -1,20 +1,36 @@
 <image src="../../img/rankinglist_bg.png" alt="" mode="aspectFill" class="bg-img"></image>
-<radio-group class="radio-group" bindchange="radioChange">
+<!-- <radio-group class="radio-group" bindchange="radioChange">
   <label class="radio" wx:key="{{this}}" wx:for="{{sizes}}">
     <radio value="{{item}}" checked="{{item == chooseType}}" color="#226fbe"/>{{item}}✻{{item}}
   </label>
-</radio-group>
+</radio-group> -->
 
 <view class="list">
-  <view class="list-title">排行榜</view>
+	<view class="list-title">
+			<label class="list-tab" bindtap="changeList">
+					{{item}}✻{{item}}
+			</label>
+	</view>
+	<view class="list-intro">{{item}}✻{{item}}成绩排行榜 | 点击可切换其他榜单</view>
   <scroll-view scroll-y scroll-with-animation class="list-container">
 		<view wx:for="{{list}}" wx:key="{{this}}" class="list-content">
 			<view class="content-left">
 				<text class="number">{{item.number}}</text>
-				<image src="{{item.avatarUrl}}"></image>
+				<view class="avatar avatar_1st" wx:if="{{index==0}}">
+					<image src="{{item.avatarUrl}}"></image>
+				</view>
+				<view class="avatar avatar_2nd" wx:if="{{index==1}}">
+					<image src="{{item.avatarUrl}}"></image>
+				</view>
+				<view class="avatar avatar_3rd" wx:if="{{index==2}}">
+					<image src="{{item.avatarUrl}}"></image>
+				</view>
+				<view class="avatar" wx:if="{{index>2}}">
+					<image src="{{item.avatarUrl}}"></image>
+			  </view>
 				<text class="nickName">{{item.nickName}}</text>
 			</view>
-			<text class="record">{{item.record}} 秒</text>
+			<text class="record">{{item.record}}s</text>
 		</view>
   </scroll-view>
 </view>
