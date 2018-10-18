@@ -67,6 +67,7 @@
 	background: #ffffff;
 	opacity: 0.1;
 	border-radius: 10px;
+
 }
 .buttons-group {
 	position: absolute;
@@ -211,7 +212,13 @@
 
 .avatar {
 	transition: width 0.5s ease-out, height 0.5s ease-out;
+	-moz-transition: width 0.5s ease-out, height 0.5s ease-out;	/* Firefox */
 	-webkit-transition: width 0.5s ease-out, height 0.5s ease-out;	/* Safari 和 Chrome */
+	-o-transition: width 0.5s ease-out, height 0.5s ease-out;
+	/*transition: height 5s;
+	-moz-transition: height 5s;	
+	-webkit-transition: height 5s;	
+	-o-transition: height 5s;*/
 }
 
 .avatar-name {

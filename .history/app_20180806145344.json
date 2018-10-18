@@ -5,6 +5,7 @@
     "pages/list/index"
   ],
   "window": {
+    "navigationBarTitleText": "Demo",
     "backgroundColorTop":"#6B2C86",
     "backgroundColorBottom":"#0E033F",
     "backgroundColor" : "#0E033F",

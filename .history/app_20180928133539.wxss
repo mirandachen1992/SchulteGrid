@@ -1,13 +1,3 @@
-@font-face{
-	font-family: 'hyquheiw';
-	src: url("https://sg.eldesign.cn/SchulteGrid/fonts/hyquheiw.ttf") format('truetype'),
-	url("https://sg.eldesign.cn/SchulteGrid/fonts/hyquheiw.woff") format('woff'),
-	url("https://sg.eldesign.cn/SchulteGrid/fonts/hyquheiw.eot") ,
-	url("https://sg.eldesign.cn/SchulteGrid/fonts/hyquheiw.svg") ,format('svg')
-
-}
-
-
 .bg-img {
     position: absolute;
     top: 0;
