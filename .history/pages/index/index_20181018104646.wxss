@@ -40,7 +40,7 @@
 	border-radius: 5px;
 	font-size: 8vw;
 	color: rgb(0, 78, 102);
-	/* transition: all 0.2s; */
+	transition: all 0.2s;
 
 }
 
@@ -66,7 +66,9 @@
 	height: 100%;
 	background: #ffffff;
 	opacity: 0.1;
+	/*border: 10rpx solid #f3d665;*/
 	border-radius: 10px;
+
 }
 .buttons-group {
 	position: absolute;
@@ -94,10 +96,14 @@
 	line-height: 116rpx;
 	text-align: center;
 	transform:rotate(-20deg);
+	-ms-transform:rotate(-20deg); 	/* IE 9 */
+	-moz-transform:rotate(-20deg); 	/* Firefox */
 	-webkit-transform:rotate(-20deg); /* Safari 和 Chrome */
-
+	-o-transform:rotate(-20deg); 	/* Opera */
 }
 .buttons .active-tab {
+	/*color: #efcb48;*/
+	/* background: #fcad26; */
 	width:78rpx;
 	height:78rpx;
 	background: #ffffff;
@@ -211,7 +217,13 @@
 
 .avatar {
 	transition: width 0.5s ease-out, height 0.5s ease-out;
+	-moz-transition: width 0.5s ease-out, height 0.5s ease-out;	/* Firefox */
 	-webkit-transition: width 0.5s ease-out, height 0.5s ease-out;	/* Safari 和 Chrome */
+	-o-transition: width 0.5s ease-out, height 0.5s ease-out;
+	/*transition: height 5s;
+	-moz-transition: height 5s;	
+	-webkit-transition: height 5s;	
+	-o-transition: height 5s;*/
 }
 
 .avatar-name {

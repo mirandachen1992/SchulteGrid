@@ -201,6 +201,7 @@ Page({
     this.setData({
       closeGrid: false
     });
+    this.start();
   },
 
   toList: function (event) {
