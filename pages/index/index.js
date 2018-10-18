@@ -142,7 +142,7 @@ Page({
 
   showGrid:function(event){
     this.setData({closeGrid:false })
-      this.start();
+    this.start();
   },
 
   toList: function(event) {
