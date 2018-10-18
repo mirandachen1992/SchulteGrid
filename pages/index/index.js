@@ -137,7 +137,8 @@ Page({
           closeGrid: true,
           showNum: false,
           status: 'success',
-          score: pass
+          score: pass,
+          hasStarted:false,
         }, () => {
           app.clockAudio.stop();
           app.successAudio.play();
@@ -198,8 +199,13 @@ Page({
   },
 
   showGrid: function (event) {
+    let time = new Date();
     this.setData({
-      closeGrid: false
+      closeGrid: false,
+      startTime: time.getTime(),
+      showNum: true,
+      time: 0,
+      num: 0
     });
   },
 
