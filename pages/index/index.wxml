@@ -8,6 +8,7 @@
 					<!-- <view class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</view> -->
 					<li  class="{{currentSize == item ? 'active-tab':'normal-tab'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</li>
 			</ul>
+			<view class="time-recorder" wx:if="{{!closeGrid}}">{{time}}</view>
 			<view class="container" wx:if="{{!closeGrid}}">
 				<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
 					<view 
