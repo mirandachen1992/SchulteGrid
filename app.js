@@ -21,7 +21,7 @@ App({
       }
     });
     this.startAudio();
-    this.setAuthorize();
+   // this.setAuthorize();
     
     // wx.getSetting({
     //   success: (res) => {
@@ -97,5 +97,7 @@ App({
     console.log(msg)
   },
  
-  globalData: {}
+  globalData: {
+    authorize:false
+  }
 })
