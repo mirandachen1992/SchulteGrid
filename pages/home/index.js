@@ -86,6 +86,7 @@ Page({
       animationData3: {}
     })
     app.globalData.authorize = true;
+    
     wx.navigateTo({
       url: '/pages/index/index'
     })
