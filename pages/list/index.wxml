@@ -6,12 +6,15 @@
 </radio-group> -->
 
 <view class="list">
-	<view class="list-title">
-			<label class="list-tab" bindtap="changeList">
-					{{item}}✻{{item}}
-			</label>
+	<view bindtap="changeList">
+			<view class="list-title">
+					<label class="list-tab">
+							{{item}}✻{{item}}
+					</label>
+			</view>
+			<view class="list-intro">{{item}}✻{{item}}成绩排行榜 | 点击可切换其他榜单</view>
+
 	</view>
-	<view class="list-intro">{{item}}✻{{item}}成绩排行榜 | 点击可切换其他榜单</view>
   <scroll-view scroll-y scroll-with-animation class="list-container">
 		<view wx:for="{{list}}" wx:key="{{this}}" class="list-content">
 			<view class="content-left">
