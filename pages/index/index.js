@@ -32,6 +32,7 @@ Page({
     url: '',
     hasStarted: false,
     closeGrid: false,
+    choosedSize:3,
   },
 
   onLoad: function () {
@@ -89,19 +90,35 @@ Page({
   },
 
   choose: function (event) {
-    app.buttonAudio.play()
-    let {
-      openId
-    } = this.data;
     let size = Number(event.target.id);
-    this.setData({ ...setSize(size),
-      status: ''
-    });
-    getRecord(openId, size).then(res => {
+    let time = new Date();
+    if(this.data.hasStarted && size!=this.data.choosedSize){
+      console.log('clear');
       this.setData({
-        topRecord: res
+        time:0,
+        startTime: time.getTime(),
+        hasStarted:false
+      })
+      clearInterval(this.interval);
+      app.clockAudio.stop();
+    }
+    if(!this.data.hasStarted && size !=this.data.choosedSize){
+      app.buttonAudio.play()
+      let {
+        openId
+      } = this.data;
+      this.setData({ ...setSize(size),
+        status: '',
+        choosedSize:size
       });
-    })
+      getRecord(openId, size).then(res => {
+        this.setData({
+          topRecord: res
+        });
+      })
+    }
+    
+    
   },
 
   // Event handler.
