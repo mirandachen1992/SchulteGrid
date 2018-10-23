@@ -360,4 +360,8 @@ Page({
       }
     })
   },
+  test: function () {
+
+  }
+
 })

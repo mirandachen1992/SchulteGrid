@@ -2,23 +2,71 @@ const app = getApp();
 
 Page({
   data: {
+    authorize: false,
     src: '../../img/title.png',
     modalSrc: '../../info.png',
     bgSrc: '../../bacground.png',
+    isShow: false,
     showModal: '',
     audio: true,
+    showtest: false
   },
- 
+  onShow: function () {
+    this.setData({
+      showtest: true,
+      isShow: true
+    })
+  },
+  onReady: function () {
+    this.setData({
+      showtest: true
+    })
+
+  },
+  onUnload: function () {
+    this.setData({
+      isShow: false,
+    })
+
+  },
+  onHide: function () {},
+
+
   onLoad: function () {
     wx.showShareMenu({
       withShareTicket: true
     })
+    if (app.globalData.authorize) {
+      this.setData({
+        authorize: app.globalData.authorize
+      })
+      wx.getUserInfo({
+        success: function (res) {
+          app.globalData.userInfo = res.userInfo
+        }
+      })
+    } else {
+      app.setAuthorize = authorize => {
+        this.setData({
+          authorize
+        });
+        wx.getUserInfo({
+          success: function (res) {
+            app.globalData.userInfo = res.userInfo;
+          }
+        })
+      }
+    }
   },
-  // 获取用户信息
+
   getUserInfo: function (info, err) {
-    app.globalData.userInfo = JSON.parse(info.detail.rawData);
-    app.globalData.authorize = true;
     app.buttonAudio.play()
+    //   判断是否授权成功
+    this.setData({
+      authorize: true,
+      isShow: false,
+    })
+    app.globalData.authorize = true;
     wx.navigateTo({
       url: '/pages/index/index'
     })
@@ -47,7 +95,7 @@ Page({
       path: '/pages/home/index',
     }
   },
-  // 切换音效
+
   switchChange: function (e) {
     const openAudio = e.detail.value;
     if (openAudio) {

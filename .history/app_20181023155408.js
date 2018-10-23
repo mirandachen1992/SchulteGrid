@@ -46,6 +46,29 @@ App({
     this.clockAudio.loop = true;
   },
 
+  setAuthorize: function () {
+    const _this = this;
+    return new Promise((resolve, reject) => {
+      wx.getSetting({
+        success: (res) => {
+          let authorize = !!res.authSetting['scope.userInfo'];
+          _this.globalData.authorize = authorize;
+          wx.getUserInfo({
+            success: function(res) {
+              _this.globalData.userInfo = res.userInfo;
+              resolve(authorize);
+            },
+            fail: (err) => {
+              reject(err);
+            }
+          })
+        },
+        fail: (err) => {
+          reject(err);
+        }
+      })
+    })
+  },
 
   onShow: function(options) {
     // Do something when show.

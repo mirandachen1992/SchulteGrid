@@ -32,7 +32,6 @@ Page({
     url: '',
     hasStarted: false,
     closeGrid: false,
-    choosedSize: 3,
   },
 
   onLoad: function () {
@@ -62,14 +61,14 @@ Page({
   },
 
   onHide: function () {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   },
 
   onUnload: function () {
     app.clockAudio.stop();
     clearInterval(this.interval);
   },
-  // 等待获取Openid
+
   awaitOpenId: function () {
     return new Promise((resolve, reject) => {
       if (app.globalData.openId) {
@@ -86,41 +85,26 @@ Page({
         }
       }
     })
+
   },
-  // 选择模式
+
   choose: function (event) {
+    app.buttonAudio.play()
+    let {
+      openId
+    } = this.data;
     let size = Number(event.target.id);
-    let time = new Date();
-    if (this.data.hasStarted && size != this.data.choosedSize) {
-      console.log('clear');
+    this.setData({ ...setSize(size),
+      status: ''
+    });
+    getRecord(openId, size).then(res => {
       this.setData({
-        time: 0,
-        startTime: time.getTime(),
-        hasStarted: false
-      })
-      clearInterval(this.interval);
-      app.clockAudio.stop();
-    }
-    if (!this.data.hasStarted && size != this.data.choosedSize) {
-      app.buttonAudio.play()
-      let {
-        openId
-      } = this.data;
-      this.setData({ ...setSize(size),
-        status: '',
-        choosedSize: size
+        topRecord: res
       });
-      getRecord(openId, size).then(res => {
-        this.setData({
-          topRecord: res
-        });
-      })
-    }
-
-
+    })
   },
 
-  // 点击框框
+  // Event handler.
   clickMe: function (event) {
     if (!this.data.hasStarted) {
       this.start();
@@ -154,7 +138,7 @@ Page({
           showNum: false,
           status: 'success',
           score: pass,
-          hasStarted: false,
+          hasStarted:false,
         }, () => {
           app.clockAudio.stop();
           app.successAudio.play();
@@ -293,7 +277,6 @@ Page({
 
   share: function () {
     app.buttonAudio.play()
-    let _this = this;
     let {
       userInfo
     } = this.data;
@@ -360,4 +343,8 @@ Page({
       }
     })
   },
+  test: function () {
+
+  }
+
 })

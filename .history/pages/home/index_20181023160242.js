@@ -7,14 +7,30 @@ Page({
     bgSrc: '../../bacground.png',
     showModal: '',
     audio: true,
+    showtest: false
   },
- 
+  onShow: function () {
+    this.setData({
+      showtest: true,
+    })
+  },
+  onReady: function () {
+    this.setData({
+      showtest: true
+    })
+
+  },
+  onUnload: function () {
+  },
+  onHide: function () {},
+
+
   onLoad: function () {
     wx.showShareMenu({
       withShareTicket: true
     })
   },
-  // 获取用户信息
+
   getUserInfo: function (info, err) {
     app.globalData.userInfo = JSON.parse(info.detail.rawData);
     app.globalData.authorize = true;
@@ -47,7 +63,7 @@ Page({
       path: '/pages/home/index',
     }
   },
-  // 切换音效
+
   switchChange: function (e) {
     const openAudio = e.detail.value;
     if (openAudio) {

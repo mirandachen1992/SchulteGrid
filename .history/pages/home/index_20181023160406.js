@@ -7,8 +7,23 @@ Page({
     bgSrc: '../../bacground.png',
     showModal: '',
     audio: true,
+    showtest: false
   },
- 
+  onShow: function () {
+    this.setData({
+      showtest: true,
+    })
+  },
+  onReady: function () {
+    this.setData({
+      showtest: true
+    })
+
+  },
+  onUnload: function () {},
+  onHide: function () {},
+
+
   onLoad: function () {
     wx.showShareMenu({
       withShareTicket: true
