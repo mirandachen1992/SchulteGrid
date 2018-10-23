@@ -7,8 +7,23 @@ Page({
     bgSrc: '../../bacground.png',
     showModal: '',
     audio: true,
+    showtest: false
   },
- 
+  onShow: function () {
+    this.setData({
+      showtest: true,
+    })
+  },
+  onReady: function () {
+    this.setData({
+      showtest: true
+    })
+
+  },
+  onUnload: function () {},
+  onHide: function () {},
+
+
   onLoad: function () {
     wx.showShareMenu({
       withShareTicket: true
@@ -18,17 +33,6 @@ Page({
   getUserInfo: function (info, err) {
     app.globalData.userInfo = JSON.parse(info.detail.rawData);
     app.globalData.authorize = true;
-<<<<<<< HEAD
-    
-    wx.navigateTo({
-      url: '/pages/index/index'
-    })
-  },
-
-
-  goToList: function () {
-=======
->>>>>>> f156df507c24d1b02d2fb62f64ecfec17228c8ce
     app.buttonAudio.play()
     wx.navigateTo({
       url: '/pages/index/index'

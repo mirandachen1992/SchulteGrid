@@ -69,7 +69,7 @@ Page({
     app.clockAudio.stop();
     clearInterval(this.interval);
   },
-  // 等待获取Openid
+
   awaitOpenId: function () {
     return new Promise((resolve, reject) => {
       if (app.globalData.openId) {
@@ -86,8 +86,9 @@ Page({
         }
       }
     })
+
   },
-  // 选择模式
+
   choose: function (event) {
     let size = Number(event.target.id);
     let time = new Date();
@@ -120,7 +121,7 @@ Page({
 
   },
 
-  // 点击框框
+  // Event handler.
   clickMe: function (event) {
     if (!this.data.hasStarted) {
       this.start();
@@ -360,4 +361,8 @@ Page({
       }
     })
   },
+  test: function () {
+
+  }
+
 })

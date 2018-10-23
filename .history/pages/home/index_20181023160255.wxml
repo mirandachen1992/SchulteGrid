@@ -1,7 +1,7 @@
 <view class="home-container">
     <image src="../../img/background.png" alt="" mode="aspectFill" class="bg-img"></image>
     <image src="../../img/title.png" alt="" mode="aspectFit" class="title-image" style="height: 135rpx;"></image>
-    <view class="logo">
+    <view class="logo" wx:if="{{showtest}}">
         <image src="../../img/logo.png" alt="" mode="aspectFit" style="height: 327rpx;"></image>
     </view>
     <view>
