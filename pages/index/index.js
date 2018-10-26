@@ -28,6 +28,7 @@ Page({
     // timeShow: 0,
     startTime: 0,
     score: 0,
+    scoreArr:[],
     showModal: false,
     url: '',
     hasStarted: false,
@@ -148,12 +149,16 @@ Page({
         } = this.data;
         let time = new Date();
         let pass = ((time.getTime() - startTime) / 1000).toFixed(2);
+        let scoreArr = pass.toString().split('');
+        scoreArr.push("s")
+        console.log('scoreArr',scoreArr)
         clearInterval(this.interval);
         this.setData({ ...setSize(currentSize),
           closeGrid: true,
           showNum: false,
           status: 'success',
           score: pass,
+          scoreArr:scoreArr,
           hasStarted: false,
         }, () => {
           app.clockAudio.stop();
@@ -182,7 +187,7 @@ Page({
       time,
       startTime
     } = this.data;
-    if (time < 90) {
+    if (time < 900) {
       let date = new Date();
       let currentTime = ((date.getTime() - startTime) / 1000).toFixed(2);
       this.setData({

@@ -13,6 +13,7 @@
 .time-recorder{
 	text-align: center;
 }
+
 .container {
 	width: 100%;
 	height: 100%;
@@ -152,6 +153,9 @@
 	margin-bottom:30rpx;
 	text-align:center;
 	color:#ffffff;
+}
+.text .text-item{
+	display: inline-block;
 }
 .text .status {
 	font-size:60rpx;

@@ -1,0 +1,3 @@
+<view>
+        <view class="score-item" style="background-position: 0 {{posParam}}px"></view>
+</view>

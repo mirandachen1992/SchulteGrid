@@ -8,7 +8,8 @@
 					<!-- <view class="{{currentSize == item ? 'active-button':'button'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</view> -->
 					<li  class="{{currentSize == item ? 'active-tab':'normal-tab'}}" wx:for="{{sizes}}" bind:touchstart="choose" id="{{item}}">{{item}}✻{{item}}</li>
 			</ul>
-			<view class="time-recorder" wx:if="{{!closeGrid}}">{{time}}</view>
+			<view class="time-recorder" wx:if="{{!closeGrid}}">{{time}}
+			</view>
 			<view class="container" wx:if="{{!closeGrid}}">
 				<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
 					<view 
@@ -25,9 +26,9 @@
 
 		<view class="buttons-group" wx:if="{{closeGrid}}">
 			<view class="text">
-				<!-- <view class="status">{{statusText[status]}}</view>
-				<view class="score" wx:if="{{status == 'success'}}">成绩:<text>{{score}}</text>s</view> -->
-				<view class="score" wx:if="{{status == 'success'}}"><text>{{score}}</text>s</view>
+				<view class="text-item" wx:if="{{status == 'success'}}" wx:for="{{scoreArr}}" wx:key="this">
+					<score item="{{item}}"></score>
+				</view>
 			</view>
 			<view class="buttons-bottom">
 				<button class="premary-button" bind:touchstart="showGrid">继续挑战</button>
