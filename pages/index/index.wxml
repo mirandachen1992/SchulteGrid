@@ -14,7 +14,7 @@
 				<view class="grid-container" wx:for="{{numbers}}" wx:key="this">
 					<view 
 							class="'grid' {{num < item ? (clickId == item && item !== num + 1 ? 'test' : ''):'grid-disable' }}" 
-							animation="{{item == clickId ? scaleData : ''}}"
+							animation="{{(item == clickId) && (num == 1 || item == num +1)? scaleData : ''}}"
 							style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
 							bind:touchstart="clickMe" 
 							id="{{item}}"

@@ -100,7 +100,8 @@ Page({
       this.setData({
         time: 0,
         startTime: time.getTime(),
-        hasStarted: false
+        hasStarted: false,
+        clickId:0,
       })
       clearInterval(this.interval);
       app.clockAudio.stop();
@@ -112,7 +113,8 @@ Page({
       } = this.data;
       this.setData({ ...setSize(size),
         status: '',
-        choosedSize: size
+        choosedSize: size,
+        clickId:0,
       });
       getRecord(openId, size).then(res => {
         this.setData({
@@ -190,8 +192,8 @@ Page({
 
 scaleTap: function(event) {
   var animation = wx.createAnimation({});
-  animation.rotate(90).scale(0).step({duration:200})
-  animation.rotate(0).scale(1).step({duration:150})
+  animation.rotate(45).opacity(0.5).scale(0).step({duration:200})
+  animation.rotate(0).opacity(1.0).scale(1).step({duration:150})
   this.setData({scaleData: animation.export()})
 
 },
