@@ -34,6 +34,9 @@ Page({
     hasStarted: false,
     closeGrid: false,
     choosedSize: 3,
+
+    //点击动画参数
+    scaleData:null
   },
 
   onLoad: function () {
@@ -142,6 +145,8 @@ Page({
       this.setData({
         num: Number(item)
       })
+      this.scaleTap(event);
+
       // 完成
       if (item == currentSize * currentSize) {
         let {
@@ -181,6 +186,15 @@ Page({
       }
     }
   },
+//动画函数：：
+
+scaleTap: function(event) {
+  var animation = wx.createAnimation({});
+  animation.rotate(90).scale(0).step({duration:200})
+  animation.rotate(0).scale(1).step({duration:150})
+  this.setData({scaleData: animation.export()})
+
+},
 
   timer: function () {
     let {

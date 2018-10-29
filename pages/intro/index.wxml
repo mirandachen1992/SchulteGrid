@@ -1,0 +1,15 @@
+<view class="intro-container">
+        <image src="../../img/game_bg.png" alt="" mode="aspectFill" class="bg-img"></image>
+        <image src="../../img/rectangular.png" alt="" class="rec-item">
+        </image>
+        <view class="rec-text">用手指从小到大依次点击数字,同时诵读出声</view>
+
+        <view class="container" wx:if="{{!closeGrid}}">
+                <view class="grid-container" wx:for="{{numbers}}" wx:key="this">
+                        <view class="grid" id="{{item}}" style="width:100px; height:100px; " >
+                                <text>{{item}}</text>
+                        </view>
+                </view>
+        </view>
+
+</view>

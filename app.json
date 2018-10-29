@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/index",
     "pages/index/index",
-    "pages/list/index"
+    "pages/list/index",
+    "pages/intro/index"
   ],
   "window": {
     "backgroundColorTop":"#6B2C86",
