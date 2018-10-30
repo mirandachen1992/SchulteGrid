@@ -25,7 +25,6 @@ Page({
     userInfo: {},
     topRecord: 0,
     clickId: 0,
-    // timeShow: 0,
     startTime: 0,
     score: 0,
     scoreArr:[],
@@ -134,7 +133,6 @@ Page({
     let {
       num,
       currentSize,
-      time,
       userInfo,
       openId
     } = this.data;
@@ -158,7 +156,6 @@ Page({
         let pass = ((time.getTime() - startTime) / 1000).toFixed(2);
         let scoreArr = pass.toString().split('');
         scoreArr.push("s")
-        console.log('scoreArr',scoreArr)
         clearInterval(this.interval);
         this.setData({ ...setSize(currentSize),
           closeGrid: true,
@@ -175,7 +172,6 @@ Page({
           openId: this.data.openId,
           nickName: userInfo.nickName,
           avatarUrl: userInfo.avatarUrl,
-          // record: time,
           record: pass,
           type: currentSize
         }).then(data => {
@@ -192,8 +188,8 @@ Page({
 
 scaleTap: function(event) {
   var animation = wx.createAnimation({});
-  animation.rotate(45).opacity(0.5).scale(0).step({duration:200})
-  animation.rotate(0).opacity(1.0).scale(1).step({duration:150})
+  animation.rotate(90).opacity(0.5).scale(0).step({duration:200})
+  animation.rotate(0).opacity(1.0).scale(1).step({duration:50})
   this.setData({scaleData: animation.export()})
 
 },
@@ -231,7 +227,6 @@ scaleTap: function(event) {
     }, () => {
       app.clockAudio.play();
       this.interval = setInterval(this.timer, 100);
-      // this.interval = setInterval(this.timer, 50);
     });
   },
 
