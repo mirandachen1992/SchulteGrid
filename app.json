@@ -3,7 +3,10 @@
     "pages/home/index",
     "pages/index/index",
     "pages/list/index",
-    "pages/intro/index"
+    "pages/intro/index",
+    "pages/chooseMode/index",
+    "pages/breakPage/index"
+
   ],
   "window": {
     "backgroundColorTop":"#6B2C86",

@@ -41,14 +41,14 @@
 }
 
 .modal-content {
+    width: 100%;
     position: relative;
     left: -50%;
-    background: #fff;
     border-radius: 10px;
+    background: #fff;
     transition: all .3s;
     font-size: 14px;
-	overflow: hidden;
-
+    overflow: hidden;
 }
 
 .modal:before {

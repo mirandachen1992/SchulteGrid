@@ -269,40 +269,59 @@ scaleTap: function(event) {
     })
   },
 
-  draw: function (img1, img2) {
+  draw: function (img1, img2,img3,img4) {
     let {
       userInfo,
       currentSize,
       topRecord
     } = this.data;
     const ctx = wx.createCanvasContext('myCanvas');
-
+ 
     ctx.setFillStyle('#ffffff')
-    ctx.fillRect(10, 0, 280, 350);
+    ctx.fillRect(10, 0, 280, 400);
 
-    ctx.drawImage(img1, 30, 10, 240, 240);
+    ctx.drawImage(img3, 0, 0, 300, 370);
+    ctx.drawImage(img4, 70, 50, 165, 175);
 
+    ctx.drawImage(img1,188,290,86,86);
+
+    // ctx.save()
+    // ctx.beginPath()
+    // ctx.arc(50, 300, 30, 0, 2 * Math.PI)
+    // ctx.clip()
+    // ctx.drawImage(img2, 20, 270, 60, 60);
+    // ctx.restore()
+    var avatarurl_width = 36;    //绘制的头像宽度
+    var avatarurl_heigth = 36;   //绘制的头像高度
+    var avatarurl_x = 20;   //绘制的头像在画布上的位置
+    var avatarurl_y = 270;
     ctx.save()
     ctx.beginPath()
-    ctx.arc(50, 300, 30, 0, 2 * Math.PI)
+    ctx.arc(avatarurl_width / 2 + avatarurl_x, avatarurl_heigth / 2 + avatarurl_y, avatarurl_width / 2, 0, Math.PI * 2, false);
     ctx.clip()
-    ctx.drawImage(img2, 20, 270, 60, 60);
+    ctx.drawImage(img2, avatarurl_x, avatarurl_y, avatarurl_width, avatarurl_heigth); 
     ctx.restore()
+
+
 
     ctx.setFontSize(14)
     ctx.setFillStyle('#6F6F6F')
-    ctx.fillText(userInfo.nickName, 90, 280)
-
-    ctx.setFontSize(14)
-    ctx.setFillStyle('#111111')
-    ctx.fillText(`${currentSize}✻${currentSize}我的最好成绩是${topRecord}秒哟`, 90, 300)
+    ctx.fillText(userInfo.nickName, 62, 290)
 
     ctx.setFontSize(12)
     ctx.setFillStyle('#111111')
-    ctx.fillText('长按扫码快来和我PK', 90, 330)
+    ctx.fillText(`${currentSize}✻${currentSize}我的最好成绩是${topRecord}秒噢`, 20, 322)
+
+    ctx.setFontSize(12)
+    ctx.setFillStyle('#111111')
+    ctx.fillText('快来和我一起PK吧', 20, 340)
     ctx.draw()
 
     wx.hideLoading();
+
+    this.setData({
+      test:true
+    })
 
   },
 
@@ -314,14 +333,18 @@ scaleTap: function(event) {
       userInfo
     } = this.data;
     let img1, img2 = '';
+    var img3 = "https://sg.eldesign.cn/SchulteGrid/img/box-container.png";
+    var img4 = "https://sg.eldesign.cn/SchulteGrid/img/box.png"
     wx.showLoading();
     // 1.首先拿到二维码图片地址
     shareImg().then(data => {
+      console.log('分享数据',data);
+      console.log(userInfo);
       // 2.将二维码图片和头像保存缓存
-      Promise.all([this.downloadImg(data.data.data), this.downloadImg(userInfo.avatarUrl)]).then(data => {
-        [img1, img2] = data;
+      Promise.all([this.downloadImg(data.data.data), this.downloadImg(userInfo.avatarUrl),this.downloadImg(img3),this.downloadImg(img4)]).then(data => {
+        [img1, img2,img3,img4] = data;
         // 3. 绘制canvas
-        this.draw(img1, img2);
+        this.draw(img1, img2,img3,img4);
         this.setData({
           showModal: true
         })
@@ -346,7 +369,7 @@ scaleTap: function(event) {
       x: 0,
       y: 0,
       width: 300,
-      height: 350,
+      height: 400,
       destWidth: 600,
       destHeight: 700,
       canvasId: 'myCanvas',

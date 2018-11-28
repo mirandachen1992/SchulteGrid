@@ -1,4 +1,5 @@
 const { getOpenId, getRecord } = require('./request/request');
+const {mockData} =require('./utils/utils')
 
 App({
   onLaunch: function() {
@@ -58,6 +59,7 @@ App({
   },
  
   globalData: {
-    authorize:false
+    authorize:false,
+    ...mockData()
   }
 })

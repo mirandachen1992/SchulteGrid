@@ -1,0 +1,12 @@
+<image src="../../img/background.png" alt="" mode="aspectFill" class="bg-img"></image>
+
+<view class="page-container">
+    <view class="level-container">
+        <view class="content" wx:for="{{gridData}}" wx:key="index">
+            <view class="level-item" bind:touchstart="intoMode" id="{{index}}">{{item.title}}</view>
+            <view class="mask" wx:if="{{item.lock}}">
+                <image src="../../img/lock.png" alt="" class="lock-icon"></image>
+            </view>
+        </view>
+    </view>
+</view>

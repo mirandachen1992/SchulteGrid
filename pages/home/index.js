@@ -19,15 +19,22 @@ Page({
     app.globalData.userInfo = JSON.parse(info.detail.rawData);
     app.globalData.authorize = true;
     app.buttonAudio.play()
+  },
+  goToTrain:function(){
     wx.navigateTo({
       url: '/pages/index/index'
+    })
+  },
+  goToBreak:function(){
+    wx.navigateTo({
+      url: '/pages/chooseMode/index'
     })
   },
   // 介绍和规则
   goToInfo: function () {
     this.setData({
       showModal: 'info'
-    })
+    })  
   },
   // 设置
   goToSetting: function () {

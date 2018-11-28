@@ -1,0 +1,15 @@
+<image src="../../img/background.png" alt="" mode="aspectFill" class="bg-img"></image>
+<view class="time-recorder">{{limitTime}}</view>
+<view class="container">
+        <view class="grid-container" wx:for="{{numbers}}" wx:key="this" wx:if="{{showGrid}}">
+            <view 
+                    class="'grid' {{num < item ? (clickId == item && item !== num + 1 ? 'test' : ''):'grid-disable' }}" 
+                    animation="{{(item == clickId) && (num == 1 || item == num +1)? scaleData : ''}}"
+                    style="width:{{width}}; height:{{width}}; font-size: {{fontSize}};" 
+                    bind:touchstart="clickGrid" 
+                    id="{{item}}"
+                >
+                <text>{{item}}</text>
+            </view>
+        </view>
+    </view> 

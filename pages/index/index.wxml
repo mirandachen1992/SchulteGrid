@@ -43,10 +43,8 @@
 	</view>
 	<view class="modal-container">
 		<view wx:if="{{showModal}}" class="modal-content">
-			<canvas canvas-id="myCanvas" disable-scroll bindtouchstart="test" style="width: 100%; height: 350px;"></canvas>
-			<view class="buttons-bottom">
-				<button class="premary-button" bind:touchstart="saveImg">保存分享图</button>
-			</view>
+				<view class="share-button" bind:touchstart="saveImg" wx:if="{{test}}">分享给朋友</view>
+			<canvas canvas-id="myCanvas" disable-scroll bindtouchstart="test" style="width: 100%; height: 400px;position: relative;"></canvas>
 		</view>
 	</view>
 	<view class="{{showModal ? 'show-modal' : 'hide-modal'}}" bindtap="hideModal"></view>

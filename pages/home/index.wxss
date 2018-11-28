@@ -187,6 +187,8 @@
     height: 111rpx;
     width: 358rpx;
     margin-top: 80rpx;
+    text-align: center;
+
 }
 
 .authorize-button::after {
@@ -210,7 +212,14 @@
     top: 6px;
 }
 
-.first-button {
+.common-button {
+    display: inline-block;
+    text-align: center;
+    width: 300rpx;
+    height:90rpx;
+    background: #ffffff;
+    border-radius: 50rpx;
+    margin-top:16rpx;
     /* animation: button 0.64s ease-out; */
 }
 
@@ -223,7 +232,10 @@
     margin: 162rpx auto 100rpx;
     display: block;
 }
+.info-container{
+    margin-top: 76px;
 
+}
 .info {
     color: #ffffff;
     font-size: 12px;
@@ -253,16 +265,31 @@
 }
 
 .setting-modal {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 50rpx;
-    margin: 100rpx 0;
-
+    display: inline-block;
+    margin: 26px 10px;
 }
 
 .setting-modal switch {
     /* height: 100%; */
     color: #226fbe;
+    margin-left:10px;
 }
 
+
+.setting-modal .sound-icon{
+    width:15px;
+    height:12px;
+    display: inline-block;
+    margin-left: 160px;
+}
+
+
+.modal{
+    width:100%;
+}
+
+.setting-content{
+    background: url("https://sg.eldesign.cn/SchulteGrid/img/dolphin-icon.png") no-repeat center;
+    background-size: 100% 100%;
+    top:200px;
+}

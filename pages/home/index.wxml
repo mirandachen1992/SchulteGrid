@@ -6,13 +6,17 @@
     </view>
     <view>
         <view class="authorize-container">
-            <button open-type="getUserInfo" class="authorize-button first-button" bindgetuserinfo="getUserInfo"
-                animation="{{animationData2}}">
-                <image src="../../img/startButton.png" class="authorize-img" alt="" mode="aspectFit"></image>
+            <button open-type="getUserInfo" class="authorize-button common-button" bindgetuserinfo="getUserInfo" bindtap="goToTrain"
+                animation="{{animationData2}}">训练模式
+            </button>
+            <button open-type="getUserInfo" class="authorize-button common-button" bindgetuserinfo="getUserInfo" bindtap="goToBreak"
+                animation="{{animationData2}}">闯关模式
             </button>
         </view>
-        <view class="info" bind:touchstart="goToInfo">介绍和规则</view>
-        <view class="info" bind:touchstart="goToSetting">设置</view>
+        <view class="info-container">
+            <!-- <view class="info" bind:touchstart="goToInfo">介绍和规则</view> -->
+            <view class="info" bind:touchstart="goToSetting">设置</view>
+        </view>
     </view>
     <view class="modal-container">
         <view wx:if="{{showModal == 'info'}}" class="modal-content">
@@ -27,17 +31,16 @@
             </view>
             <image src="{{modalSrc}}" mode="aspectFill" class="{{showImg ? 'info-image' : 'hide-img'}}" style="height: 68px;"></image>
         </view>
-        <view wx:if="{{showModal == 'setting'}}" class="modal-content">
+        <view wx:if="{{showModal == 'setting'}}" class="modal-content setting-content">
             <view class="modal">
                 <view class="setting-modal">
-                    <text>小程序音效</text>
+                    <image src="../../img/sound-icon.png" alt="" class="sound-icon"></image>
                     <switch checked="{{audio}}" color="#226fbe" bindchange="switchChange" />
                 </view>
-                <view class="contact">
+                <!-- <view class="contact">
                     <button class="contact-btn" open-type="contact" />联系客服
-                </view>
+                </view> -->
             </view>
-            <image src="{{modalSrc}}" mode="aspectFill" class="{{showImg ? 'info-image' : 'hide-img'}}" style="height: 68px;"></image>
         </view>
     </view>
     <view class="{{showModal ? 'show-modal' : 'hide-modal'}}" bindtap="hideModal"></view>
